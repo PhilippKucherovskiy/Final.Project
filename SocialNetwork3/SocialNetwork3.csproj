@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <Folder Include="DAL\DB\" />
-    <Folder Include="PLL\Views\Новая папка\" />
+    <Folder Include="PLL\Views\Views\" />
   </ItemGroup>
 
   <ItemGroup>

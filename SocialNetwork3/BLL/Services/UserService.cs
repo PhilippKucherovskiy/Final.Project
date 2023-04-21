@@ -66,6 +66,22 @@ namespace SocialNetwork3.BLL.Services
             return ConstructUserModel(findUserEntity);
         }
 
+        /// <summary>
+        /// Метод добавляет друга, если указанный email принадлежит существующему пользователю
+        public void AddFriend(string userEmail, string friendEmail)
+        {
+            var user = userRepository.GetByEmail(userEmail);
+            var friend = userRepository.GetByEmail(friendEmail);
+
+            if (friend == null)
+            {
+                throw new UserNotFoundException($"User with email {friendEmail} not found.");
+            }
+
+            user.Friends.Add(friend);
+            userRepository.Update(user);
+        }
+
         public User FindByEmail(string email)
         {
             var findUserEntity = userRepository.FindByEmail(email);
@@ -99,6 +115,7 @@ namespace SocialNetwork3.BLL.Services
             if (this.userRepository.Update(updatableUserEntity) == 0)
                 throw new Exception();
         }
+        
 
         private User ConstructUserModel(UserEntity userEntity)
         {

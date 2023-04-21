@@ -1,5 +1,6 @@
 ﻿using SocialNetwork3.BLL.Models;
 using SocialNetwork3.BLL.Services;
+using SocialNetwork3.PLL.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace SocialNetwork3.PLL.Views
         {
             this.userService = userService;
         }
-
         public void Show(User user)
         {
             while (true)
@@ -47,26 +47,28 @@ namespace SocialNetwork3.PLL.Views
                             Program.userDataUpdateView.Show(user);
                             break;
                         }
-
+                    case "3":
+                        {
+                            Program.addFriendView.Show();
+                            break;
+                        }
                     case "4":
                         {
                             Program.messageSendingView.Show(user);
                             break;
                         }
-
                     case "5":
                         {
-
                             Program.userIncomingMessageView.Show(user.IncomingMessages);
                             break;
                         }
-
                     case "6":
                         {
                             Program.userOutcomingMessageView.Show(user.OutgoingMessages);
                             break;
                         }
                 }
+
             }
 
         }
